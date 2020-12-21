@@ -1,4 +1,3 @@
-
 export interface TreeData {
   name: string
   value: string
@@ -40,7 +39,7 @@ const data: TreeData[] = [
       {
         name: 'child_2-2',
         value: '2-2',
-        checked: true,
+        checked: false,
         children: [
           {
             name: 'child_2-2-1',
@@ -51,7 +50,7 @@ const data: TreeData[] = [
           {
             name: 'child_2-2-2',
             value: '2-2-2',
-            checked: true,
+            checked: false,
             children: null
           },
         ]
@@ -93,6 +92,10 @@ abstract class Component {
 
   public isComposite(): boolean {
     return false
+  }
+
+  public getChildren(): Component[] | null {
+    return null
   }
 
   public abstract getValue(): void
@@ -168,4 +171,7 @@ function buildTree(
 
 const tree = buildTree(data, new Parent({ name: 'top', value: 'top', checked: false }))
 console.log('=== res ===', tree)
-console.log('value', tree.getValue())
+const children = tree.getChildren()
+if (children !== null) {
+  console.log(children[0].getValue())
+}
