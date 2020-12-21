@@ -38,11 +38,11 @@ class Encrypt extends BaseDecorator {
       .split('')
       .map(num => `${Number(num) > 8 ? 0 : Number(num) + 1}`)
       .join('')
-    this.wrapee.writeData(encrypted)
+    super.writeData(encrypted)
   }
 
   readData() {
-    const decrypted = this.wrapee.readData()
+    const decrypted = super.readData()
       .split('')
       .map(num => `${Number(num) < 1 ? 9 : Number(num) - 1}`)
       .join('')
@@ -52,11 +52,11 @@ class Encrypt extends BaseDecorator {
 
 class Compress extends BaseDecorator {
   writeData(data: string) {
-    this.wrapee.writeData(data.slice(4))
+    super.writeData(data.slice(4))
   }
 
   readData() {
-    return `0100${this.wrapee.readData()}`
+    return `0100${super.readData()}`
   }
 }
 
