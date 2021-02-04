@@ -1,0 +1,14 @@
+
+.drop__container {
+  width: 400px;
+  height: 200px;
+  border: 2px dashed lightgray;
+  border-radius: 5px;
+  background-color: lightseagreen;
+  opacity: 0.4;
+  margin: auto;
+}
+
+.output {
+  padding: 20px;
+}
